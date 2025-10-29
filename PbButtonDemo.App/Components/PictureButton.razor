@@ -1,5 +1,23 @@
-﻿<h3>PictureButton</h3>
+﻿@inherits PictureButtonBase
 
-@code {
-
-}
+<button class="pb-btn @(FlatStyle ? "flat" : "raised")"
+        style="@BuildStyle()"
+        title="@PowerTipText"
+        disabled="@(!Enabled)"
+        tabindex="@TabOrder"
+        @onclick="HandleClick"
+        @onfocus="HandleFocus"
+        @onblur="HandleBlur"
+        @oncontextmenu:preventDefault
+        @oncontextmenu="HandleRightClick"
+        aria-label="@AccessibleName"
+        @attributes="AdditionalAttributes">
+    @if (!string.IsNullOrWhiteSpace(ImageUrl))
+    {
+        <img src="@ImageUrl" alt="" style="object-fit:contain;width:auto;height:80%;" />
+    }
+    @if (!string.IsNullOrEmpty(Text))
+    {
+        <span>@Text</span>
+    }
+</button>

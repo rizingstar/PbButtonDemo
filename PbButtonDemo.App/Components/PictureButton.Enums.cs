@@ -1,6 +1,5 @@
 ﻿namespace PbButtonDemo.App.Components
 {
-    public class PictureButton
-    {
-    }
+    public enum HTextAlign { Left, Center, Right }
+    public enum VTextAlign { Top, Middle, Bottom }
 }

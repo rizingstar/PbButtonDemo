@@ -1,14 +1,38 @@
 @page "/example-picturebutton"
 @using Microsoft.AspNetCore.Components.Web
+@using PbButtonDemo.App.Components
 
-<h3>PictureButton demo</h3>
+<h3>PictureButton Demo</h3>
 
-<PictureButton Text="Upload" PictureName="images/upload.png" DisabledName="images/upload-disabled.png" Width="160px" Height="60px" HTextAlign="HTextAlign.Center" VTextAlign="VTextAlign.Middle" TextColor="#1f2937" BackColor="#f3f4f6" FlatStyle="false" PowerTipText="Choose a file to upload" Clicked="OnClicked" RButtonDown="OnRightClick" />
+<PictureButton Text="Upload"
+               PictureName="images/upload.png"
+               DisabledName="images/upload-disabled.png"
+               Width="160px"
+               Height="60px"
+               HTextAlign="HTextAlign.Center"
+               VTextAlign="VTextAlign.Middle"
+               TextColor="#1f2937"
+               BackColor="#f3f4f6"
+               FlatStyle="false"
+               Enabled="true"
+               PowerTipText="Choose a file to upload"
+               Clicked="OnClicked"
+               RButtonDown="OnRightClick" />
 
 <p>@_status</p>
 
 @code {
-private string _status = "";
-private void OnClicked() { _status = "Clicked"; }
-private void OnRightClick(MouseEventArgs e) { _status = $"Right click at {e.ClientX},{e.ClientY}"; }
+    private string _status = "";
+
+    private void OnClicked()
+    {
+        _status = "Clicked";
+        StateHasChanged();
+    }
+
+    private void OnRightClick(MouseEventArgs e)
+    {
+        _status = $"Right click at {e.ClientX},{e.ClientY}";
+        StateHasChanged();
+    }
 }
